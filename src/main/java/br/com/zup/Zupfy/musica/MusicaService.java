@@ -19,7 +19,10 @@ public class MusicaService {
     }
 
     public void deletarMusica(int id){
-
+        if (!musicaRepository.existsById(id)){
+            throw new MusicaNaoEcontradaExeception("Musica não encontrada");
+        }
+        musicaRepository.deleteById(id);
     }
 
     public Musica atualizarMusica(Musica musica){
