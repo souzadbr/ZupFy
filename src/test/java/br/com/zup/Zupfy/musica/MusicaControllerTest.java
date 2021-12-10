@@ -1,5 +1,6 @@
 package br.com.zup.Zupfy.musica;
 
+import br.com.zup.Zupfy.Configu.Conversor;
 import br.com.zup.Zupfy.enuns.Estilo;
 import br.com.zup.Zupfy.musica.dtos.MusicaCadastroDTO;
 import br.com.zup.Zupfy.musica.dtos.MusicaDetalhesDTO;
@@ -21,10 +22,11 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import java.util.Arrays;
 import java.util.List;
 
-@WebMvcTest(MusicaController.class)
+@WebMvcTest({MusicaController.class, Conversor.class})
 public class MusicaControllerTest {
     @MockBean
     private MusicaService musicaService;
+
 
     @Autowired
     private MockMvc mockMvc;
