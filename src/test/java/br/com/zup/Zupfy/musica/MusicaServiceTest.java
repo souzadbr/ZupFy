@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -18,8 +19,10 @@ import java.time.LocalDate;
 public class MusicaServiceTest {
     @MockBean
     private MusicaRepository musicaRepository;
-    @Autowired
+    @MockBean
     private MusicaService musicaService;
+    @MockBean
+    private ModelMapper modelMapper;
 
     private Musica musica;
 
@@ -27,6 +30,9 @@ public class MusicaServiceTest {
     public void setup(){
         musica = new Musica();
         musica.setNome("Samba de um Janota Só");
+
+
+
 
     }
 
