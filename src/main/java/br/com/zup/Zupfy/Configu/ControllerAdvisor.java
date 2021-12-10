@@ -1,6 +1,7 @@
 package br.com.zup.Zupfy.Configu;
 
 
+import br.com.zup.Zupfy.musica.exceptions.MusicaNaoEcontradaExeception;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.FieldError;
@@ -34,6 +35,12 @@ public class ControllerAdvisor {
             return new MensagemDeErro("Opção não encontrada");
         }
         return new MensagemDeErro(exception.getLocalizedMessage());
+    }
+
+    @ExceptionHandler(MusicaNaoEcontradaExeception.class)
+    @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
+    public MensagemDeErro manipularExcecaoMusicaNaoEncontrada(MusicaNaoEcontradaExeception exception){
+        return new MensagemDeErro("Musica não encontrada");
     }
 
     }
