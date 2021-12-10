@@ -1,5 +1,6 @@
 package br.com.zup.Zupfy.musica;
 
+import br.com.zup.Zupfy.musica.exceptions.MusicaNaoEcontradaExeception;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +13,9 @@ public class MusicaService {
     private MusicaRepository musicaRepository;
 
     public Musica cadastrarMusica(Musica musica){
-        return musica;
+        musica.setDataDeCadastro(LocalDate.now());
+        musica.setDataDeCadastro(musica.getDataDeCadastro());
+        return musicaRepository.save(musica);
     }
 
     public void deletarMusica(int id){
