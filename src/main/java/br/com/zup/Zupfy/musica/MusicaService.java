@@ -12,24 +12,31 @@ public class MusicaService {
     @Autowired
     private MusicaRepository musicaRepository;
 
-    public Musica cadastrarMusica(Musica musica){
+    public Musica cadastrarMusica(Musica musica) {
         musica.setDataDeCadastro(LocalDate.now());
-        musica.setDataDeCadastro(musica.getDataDeCadastro());
-        return musicaRepository.save(musica);
+        musicaRepository.save(musica);
+        return musica;
     }
 
-    public void deletarMusica(int id){
-        if (!musicaRepository.existsById(id)){
+    public void deletarMusica(int id) {
+        if (!musicaRepository.existsById(id)) {
             throw new MusicaNaoEcontradaExeception("Musica não encontrada");
         }
         musicaRepository.deleteById(id);
     }
 
-    public Musica atualizarMusica(Musica musica){
+    public Musica atualizarMusica(Musica musica) {
+        musica = new Musica();
+        musica.setNome(musica.getNome());
+        musica.setDataDeCadastro(musica.getDataDeCadastro());
+        musica.setId(musica.getId());
+        musicaRepository.save(musica);
+
         return musica;
     }
 
-    public List<Musica> retornarTodasAsMusicas(){
-        return null;
+    public List<Musica> retornarTodasAsMusicas() {
+        List<Musica> musica = (List<Musica>) musicaRepository.findAll();
+        return musica;
     }
 }
