@@ -1,4 +1,4 @@
-package br.com.zup.Zupfy;
+package br.com.zup.Zupfy.Configu;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
