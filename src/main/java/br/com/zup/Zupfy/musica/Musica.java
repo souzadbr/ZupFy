@@ -3,6 +3,8 @@ package br.com.zup.Zupfy.musica;
 import br.com.zup.Zupfy.enuns.Estilo;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 @Entity
@@ -10,6 +12,7 @@ public class Musica {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @NotNull
     private String nome;
     @Enumerated(EnumType.STRING)
     private Estilo estilo;
